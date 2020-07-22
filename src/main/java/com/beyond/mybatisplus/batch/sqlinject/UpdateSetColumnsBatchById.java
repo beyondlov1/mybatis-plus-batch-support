@@ -10,7 +10,7 @@ import org.apache.ibatis.mapping.SqlSource;
 
 
 /**
- * @author: chenshipeng
+ * @author: beyond
  * @date: 2020/06/20
  */
 public class UpdateSetColumnsBatchById extends AbstractMethod {

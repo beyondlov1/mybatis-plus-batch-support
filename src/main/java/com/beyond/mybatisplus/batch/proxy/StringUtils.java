@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author chenshipeng
+ * @author beyond
  * @date 2020/07/13
  */
 public class StringUtils {

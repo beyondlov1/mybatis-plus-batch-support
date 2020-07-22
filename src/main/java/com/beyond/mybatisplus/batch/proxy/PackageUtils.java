@@ -13,7 +13,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 /**
- * @author chenshipeng
+ * @author beyond
  * @date 2020/07/16
  */
 public class PackageUtils {

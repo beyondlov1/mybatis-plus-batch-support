@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @author chenshipeng
+ * @author beyond
  * @date 2020/07/13
  */
 public class BatchEntityClassGeneratorStrategy extends DefaultGeneratorStrategy {

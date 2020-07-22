@@ -5,7 +5,7 @@ import java.util.Set;
 
 /**
  * 用于批量插入
- * @author chenshipeng
+ * @author beyond
  */
 public interface BatchWrapper {
     Map<String, Object> getColName2ValueMap();

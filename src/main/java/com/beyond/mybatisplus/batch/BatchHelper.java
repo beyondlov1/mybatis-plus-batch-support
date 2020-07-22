@@ -20,7 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
- * @author chenshipeng
+ * @author beyond
  * @date 2020/07/13
  */
 public class BatchHelper {
