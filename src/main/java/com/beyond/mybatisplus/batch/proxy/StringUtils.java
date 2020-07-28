@@ -5,13 +5,14 @@ import java.util.regex.Pattern;
 
 /**
  * @author beyond
- * @date 2020/07/13
  */
 public class StringUtils {
     private static Pattern humpPattern = Pattern.compile("[A-Z]");
 
     /**
      * 驼峰转下划线
+     * @param str 驼峰字符串
+     * @return 下划线字符串
      */
     public static String humpToLine(String str) {
         Matcher matcher = humpPattern.matcher(str);
@@ -28,6 +29,8 @@ public class StringUtils {
 
     /**
      * 首字母变小写
+     * @param name 源
+     * @return 结果
      */
     public static String deCapitalize(String name) {
         if (name == null || name.length() == 0) {

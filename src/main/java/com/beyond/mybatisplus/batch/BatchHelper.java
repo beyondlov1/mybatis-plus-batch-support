@@ -43,6 +43,9 @@ public class BatchHelper {
 
     /**
      * 相较于普通代理方式, 会慢3-4倍, 10000条数据执行需要20-30ms
+     * @param clz 实体类
+     * @param <T> 实体类
+     * @return 返回代理对象
      */
     @SuppressWarnings("unchecked")
     public static <T> T getBatchEntity(Class<T> clz) {

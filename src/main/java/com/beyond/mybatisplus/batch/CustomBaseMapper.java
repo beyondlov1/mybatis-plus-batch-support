@@ -38,6 +38,7 @@ public interface CustomBaseMapper<T> extends BaseMapper<T> {
 
     /**
      * 批量插入, 只会插入设置的字段(调用过set方法的字段)
+     * @param listForUpdate 插入列表
      */
     default int insertSetColumnsBatch(@NotEmpty List<? extends T> listForUpdate){
         return insertSetColumnsBatch(BatchEntity.wrap(listForUpdate));
@@ -45,11 +46,13 @@ public interface CustomBaseMapper<T> extends BaseMapper<T> {
 
     /**
      * 批量插入, 只会插入设置的字段(调用过set方法的字段)
+     * @param batchEntity 插入列表
      */
     int insertSetColumnsBatch(@Param(Constants.ENTITY) BatchEntity batchEntity);
 
     /**
      * 批量插入, 只会插入设置的字段(调用过set方法的字段)
+     * @param listForUpdate 更新列表
      */
     default int updateSetColumnsBatchById(@NotEmpty List<? extends T> listForUpdate){
         return updateSetColumnsBatchById(BatchEntity.wrap(listForUpdate));
@@ -57,12 +60,14 @@ public interface CustomBaseMapper<T> extends BaseMapper<T> {
 
     /**
      * 批量更新, 只会更新设置的字段(调用过set方法的字段)
+     * @param batchEntity 更新列表
      */
     int updateSetColumnsBatchById(@Param(Constants.ENTITY) BatchEntity batchEntity);
 
 
     /**
      * 批量插入, 只会插入不为null的字段 (速度比 insertSetColumnsBatch 快5-10倍)
+     * @param listForUpdate 插入列表
      */
     default int insertNotNullColumnsBatch(@NotEmpty List<T> listForUpdate){
         return insertNotNullColumnsBatch(new BatchEntity2<>(listForUpdate));
@@ -70,11 +75,13 @@ public interface CustomBaseMapper<T> extends BaseMapper<T> {
 
     /**
      * 批量插入, 只会插入不为null的字段 (速度比 insertSetColumnsBatch 快5-10倍)
+     * @param batchEntity 插入列表
      */
     int insertNotNullColumnsBatch(@Param(Constants.ENTITY) BatchEntity2<T> batchEntity);
 
     /**
      * 批量更新, 只会更新不为null的字段 (速度比 updateSetColumnsBatch 快5-10倍)
+     * @param listForUpdate 更新列表
      */
     default int updateNotNullColumnsBatchById(@NotEmpty List<T> listForUpdate){
         return updateNotNullColumnsBatchById(new BatchEntity2<>(listForUpdate));
@@ -82,11 +89,13 @@ public interface CustomBaseMapper<T> extends BaseMapper<T> {
 
     /**
      * 批量更新, 只会更新不为null的字段 (速度比 updateSetColumnsBatch 快5-10倍)
+     * @param batchEntity 更新列表
      */
     int updateNotNullColumnsBatchById(@Param(Constants.ENTITY) BatchEntity2<T> batchEntity);
 
     /**
      * 批量插入 (自动)(推荐)
+     * @param list 插入列表
      */
     default int insertBatch(@NotEmpty List<T> list){
         if (CollectionUtils.isEmpty(list)){
@@ -103,6 +112,7 @@ public interface CustomBaseMapper<T> extends BaseMapper<T> {
 
     /**
      * 批量更新 (自动)(推荐)
+     * @param list 更新列表
      */
     default int updateBatchById(@NotEmpty List<T> list){
         if (CollectionUtils.isEmpty(list)){

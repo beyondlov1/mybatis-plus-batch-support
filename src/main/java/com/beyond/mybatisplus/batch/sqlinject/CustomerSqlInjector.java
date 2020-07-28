@@ -8,7 +8,6 @@ import java.util.List;
 
 /**
  * Author  XRQ
- * Date  2020/6/17
  */
 public class CustomerSqlInjector extends DefaultSqlInjector {
 

@@ -14,7 +14,6 @@ import java.util.Set;
 
 /**
  * @author beyond
- * @date 2020/07/13
  */
 public class BatchEntityClassGeneratorStrategy extends DefaultGeneratorStrategy {
     private static final Type STRING = Type.getType(String.class);

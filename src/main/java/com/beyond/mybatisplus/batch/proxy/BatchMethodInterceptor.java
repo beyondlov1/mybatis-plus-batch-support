@@ -11,7 +11,6 @@ import java.util.Set;
 
 /**
  * @author beyond
- * @date 2020/07/13
  */
 public class BatchMethodInterceptor implements MethodInterceptor {
 

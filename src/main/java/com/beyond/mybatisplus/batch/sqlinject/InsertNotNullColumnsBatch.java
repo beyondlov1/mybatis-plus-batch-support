@@ -15,7 +15,6 @@ import org.apache.ibatis.mapping.SqlSource;
 
 /**
  * @author: XRQ
- * @date: 2020/06/20
  */
 public class InsertNotNullColumnsBatch extends AbstractMethod {
 

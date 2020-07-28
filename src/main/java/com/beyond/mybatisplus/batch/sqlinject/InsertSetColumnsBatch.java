@@ -15,7 +15,6 @@ import org.apache.ibatis.mapping.SqlSource;
 
 /**
  * @author: beyond
- * @date: 2020/06/20
  */
 public class InsertSetColumnsBatch extends AbstractMethod {
 
