@@ -4,6 +4,15 @@
 # 配合spring-boot-starter使用
 https://github.com/beyondlov1/mybatis-plus-batch-spring-boot-starter
 
+### 引用
+```xml
+<dependency>
+  <groupId>io.github.beyondlov1</groupId>
+  <artifactId>mybatis-plus-batch-support</artifactId>
+  <version>1.0</version>
+</dependency>
+```
+
 ### 发布到maven私服
 pom.xml 添加
 ```xml
