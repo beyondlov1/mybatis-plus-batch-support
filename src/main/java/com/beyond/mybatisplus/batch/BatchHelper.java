@@ -113,6 +113,7 @@ public class BatchHelper {
             TableId tableId = declaredField.getAnnotation(TableId.class);
             if (tableId != null) {
                 entityInfo.setIdColName(tableId.value());
+                entityInfo.setIdPropertyName(declaredField.getName());
                 break;
             }
         }
@@ -133,8 +134,10 @@ public class BatchHelper {
             TableField tableField = declaredField.getAnnotation(TableField.class);
             if (tableField != null) {
                 entityInfo.getFieldName2ColName().put(declaredField.getName(), tableField.value());
+                entityInfo.getColName2FieldName().put( tableField.value(), declaredField.getName());
             } else {
                 entityInfo.getFieldName2ColName().put(declaredField.getName(), StringUtils.humpToLine(declaredField.getName()));
+                entityInfo.getColName2FieldName().put(StringUtils.humpToLine(declaredField.getName()), declaredField.getName());
             }
             entityInfo.getFieldName2Field().put(declaredField.getName(), declaredField);
         }
@@ -145,8 +148,10 @@ public class BatchHelper {
 
     public static class EntityInfo {
         private String idColName;
+        private String idPropertyName;
         private Map<String, Field> fieldName2Field = new HashMap<>();
         private Map<String, String> fieldName2ColName = new HashMap<>();
+        private Map<String, String> colName2FieldName = new HashMap<>();
 
         public String getIdColName() {
             return idColName;
@@ -170,6 +175,22 @@ public class BatchHelper {
 
         public void setFieldName2ColName(Map<String, String> fieldName2ColName) {
             this.fieldName2ColName = fieldName2ColName;
+        }
+
+        public String getIdPropertyName() {
+            return idPropertyName;
+        }
+
+        public Map<String, String> getColName2FieldName() {
+            return colName2FieldName;
+        }
+
+        public void setIdPropertyName(String idPropertyName) {
+            this.idPropertyName = idPropertyName;
+        }
+
+        public void setColName2FieldName(Map<String, String> colName2FieldName) {
+            this.colName2FieldName = colName2FieldName;
         }
     }
 }

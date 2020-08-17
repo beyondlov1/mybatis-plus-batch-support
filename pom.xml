@@ -7,9 +7,15 @@
     <name>mybatis-plus-batch-support</name>
     <groupId>io.github.beyondlov1</groupId>
     <artifactId>mybatis-plus-batch-support</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <description>offer default batch insert/update method for mybatis-plus</description>
     <url>https://github.com/beyondlov1/mybatis-plus-batch-support</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+    </properties>
 
     <dependencies>
         <dependency>

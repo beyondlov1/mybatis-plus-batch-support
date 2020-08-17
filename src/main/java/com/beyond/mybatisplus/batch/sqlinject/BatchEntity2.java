@@ -60,12 +60,12 @@ public class BatchEntity2<T> extends ArrayList<T> {
         Map<String, List<Object>> valueMap = new HashMap<>();
 
         for (T t : list) {
-            for (String colName : propertyColMap.keySet()) {
-                Object o = getFieldValue(fieldMap, t, colName);
+            for (String property : propertyColMap.keySet()) {
+                Object o = getFieldValue(fieldMap, t, property);
                 if (o != null) {
-                    excludeSet.remove(colName);
+                    excludeSet.remove(property);
                 }
-                List<Object> objects = valueMap.computeIfAbsent(colName, k -> new ArrayList<>());
+                List<Object> objects = valueMap.computeIfAbsent(property, k -> new ArrayList<>());
                 objects.add(o);
             }
         }
@@ -91,16 +91,16 @@ public class BatchEntity2<T> extends ArrayList<T> {
         BatchHelper.EntityInfo entityInfo = BatchHelper.getEntityInfo(list.get(0).getClass());
         idColName = entityInfo.getIdColName();
         for (T t : list) {
-            idValueSet.add(getFieldValue(entityInfo, t, idColName));
+            idValueSet.add(getFieldValue(entityInfo, t, entityInfo.getIdPropertyName()));
         }
 
         Map<Object, Map<String, Object>> id_colName$Value_map = new HashMap<>();
         for (T t : list) {
             Map<String, Object> colName2ValueMap = new HashMap<>();
             for (String colName : colNames) {
-                colName2ValueMap.put(colName, getFieldValue(entityInfo, t, colName));
+                colName2ValueMap.put(colName, getFieldValueByColName(entityInfo, t,colName));
             }
-            id_colName$Value_map.put(getFieldValue(entityInfo, t, idColName), colName2ValueMap);
+            id_colName$Value_map.put(getFieldValue(entityInfo, t, entityInfo.getIdPropertyName()), colName2ValueMap);
         }
 
         for (String colName : colNames) {
@@ -121,9 +121,17 @@ public class BatchEntity2<T> extends ArrayList<T> {
         }
     }
 
+    private String getPropertyNameByColName(String colName, BatchHelper.EntityInfo entityInfo){
+        return entityInfo.getColName2FieldName().get(colName);
+    }
 
-    private Object getFieldValue(BatchHelper.EntityInfo entityInfo, T t, String fieldnName) {
-        Field field = entityInfo.getFieldName2Field().get(fieldnName);
+
+    private Object getFieldValueByColName(BatchHelper.EntityInfo entityInfo, T t, String colName) {
+        return getFieldValue(entityInfo, t, entityInfo.getColName2FieldName().get(colName));
+    }
+
+    private Object getFieldValue(BatchHelper.EntityInfo entityInfo, T t, String fieldName) {
+        Field field = entityInfo.getFieldName2Field().get(fieldName);
         field.setAccessible(true);
         try {
             return field.get(t);
