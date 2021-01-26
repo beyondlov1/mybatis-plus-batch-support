@@ -7,6 +7,9 @@ import java.util.regex.Pattern;
  * @author beyond
  */
 public class StringUtils {
+    private static final String UNDERLINE_STR = "_";
+    private static final char UNDERLINE_CHAR = '_';
+
     private static Pattern humpPattern = Pattern.compile("[A-Z]");
 
     /**
@@ -18,10 +21,10 @@ public class StringUtils {
         Matcher matcher = humpPattern.matcher(str);
         StringBuffer sb = new StringBuffer();
         while (matcher.find()) {
-            matcher.appendReplacement(sb, "_" + matcher.group(0).toLowerCase());
+            matcher.appendReplacement(sb, UNDERLINE_STR + matcher.group(0).toLowerCase());
         }
         matcher.appendTail(sb);
-        if (sb.toString().startsWith("_")){
+        if (sb.toString().startsWith(UNDERLINE_STR)){
             return sb.substring(1, sb.length());
         }
         return sb.toString();
@@ -39,5 +42,31 @@ public class StringUtils {
         char chars[] = name.toCharArray();
         chars[0] = Character.toLowerCase(chars[0]);
         return new String(chars);
+    }
+
+
+    /**
+     * 下划线转驼峰
+     */
+    private String lineToHump(String line) {
+        if (line == null) {
+            return null;
+        }
+        if ("".equals(line.trim())) {
+            return line;
+        }
+        int len = line.length();
+        StringBuilder sb = new StringBuilder(len);
+        for (int i = 0; i < len; i++) {
+            char c = line.charAt(i);
+            if (c == UNDERLINE_CHAR) {
+                if (++i < len) {
+                    sb.append(Character.toUpperCase(line.charAt(i)));
+                }
+            } else {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
     }
 }
