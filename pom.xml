@@ -7,7 +7,7 @@
     <name>mybatis-plus-batch-support</name>
     <groupId>io.github.beyondlov1</groupId>
     <artifactId>mybatis-plus-batch-support</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
     <description>offer default batch insert/update method for mybatis-plus</description>
     <url>https://github.com/beyondlov1/mybatis-plus-batch-support</url>
 
